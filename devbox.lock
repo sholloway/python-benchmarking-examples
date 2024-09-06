@@ -1,0 +1,65 @@
+{
+  "lockfile_version": "1",
+  "packages": {
+    "git@2.46.0": {
+      "last_modified": "2024-08-31T10:12:23Z",
+      "resolved": "github:NixOS/nixpkgs/5629520edecb69630a3f4d17d3d33fc96c13f6fe#git",
+      "source": "devbox-search",
+      "version": "2.46.0",
+      "systems": {
+        "aarch64-darwin": {
+          "store_path": "/nix/store/w443mfir51ws94kyl7zq5kipqj74j6m3-git-2.46.0"
+        },
+        "aarch64-linux": {
+          "store_path": "/nix/store/rmyh1ddc6xhp6cqv27wgvns9w8mbbw3b-git-2.46.0"
+        },
+        "x86_64-darwin": {
+          "store_path": "/nix/store/iw41zaz9yj1xpkh2x4m8cj4mzk4p7rwx-git-2.46.0"
+        },
+        "x86_64-linux": {
+          "store_path": "/nix/store/hxxkx0y690n2iadckr6imndg8223fcq1-git-2.46.0"
+        }
+      }
+    },
+    "gnumake@4.4.1": {
+      "last_modified": "2024-08-31T10:12:23Z",
+      "resolved": "github:NixOS/nixpkgs/5629520edecb69630a3f4d17d3d33fc96c13f6fe#gnumake",
+      "source": "devbox-search",
+      "version": "4.4.1",
+      "systems": {
+        "aarch64-darwin": {
+          "store_path": "/nix/store/92kvph7n3kva2snfj0hq3cl3cbmf8chc-gnumake-4.4.1"
+        },
+        "aarch64-linux": {
+          "store_path": "/nix/store/89ifqwbc4335dkfx1fmlhfgjr9dyq42a-gnumake-4.4.1"
+        },
+        "x86_64-darwin": {
+          "store_path": "/nix/store/z75g6caslrjk4s8r797ivp8q5cx6f7bj-gnumake-4.4.1"
+        },
+        "x86_64-linux": {
+          "store_path": "/nix/store/i1ys5lhw9g9wcf6jz44n1m0k1p83zcr9-gnumake-4.4.1"
+        }
+      }
+    },
+    "python@3.12.5": {
+      "last_modified": "2024-08-31T10:12:23Z",
+      "resolved": "github:NixOS/nixpkgs/5629520edecb69630a3f4d17d3d33fc96c13f6fe#python3",
+      "source": "devbox-search",
+      "version": "3.12.5",
+      "systems": {
+        "aarch64-darwin": {
+          "store_path": "/nix/store/75j38g8ii1nqkmpf6sdlj3s5dyah3gas-python3-3.12.5"
+        },
+        "aarch64-linux": {
+          "store_path": "/nix/store/ajjwc8k8sk3ksrl3dq4fsg83m1j8n8s3-python3-3.12.5"
+        },
+        "x86_64-darwin": {
+          "store_path": "/nix/store/rv3rj95fxv57c7qwgl43qa7n0fabdy0a-python3-3.12.5"
+        },
+        "x86_64-linux": {
+          "store_path": "/nix/store/pgb120fb7srbh418v4i2a70aq1w9dawd-python3-3.12.5"
+        }
+      }
+    }
+  }
+}
