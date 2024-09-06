@@ -19,7 +19,7 @@ init:
 tests:
 	@( \
 	source .venv/bin/activate; \
-	pytest; \
+	python -m pytest; \ 
 	)
 
 shell:
