@@ -1,0 +1,26 @@
+[project]
+name = "python-benchmarking-examples"
+description = "A collection of examples that demonstrate how to leverage various benchmarking and profiling tools."
+version = "2024.0.0"
+dependencies = [
+    "bpython >= 0.24",
+    "line-profiler >= 4.0.3",
+    "mypy >= 1.7.1",
+    "pytest >= 7.4.3",
+    "pytest-benchmark >= 4.0.0"
+]
+requires-python = ">=3.12"
+authors = [
+    {name ="Samuel Holloway", email="sholloway@gmail.com"}
+]
+maintainers = [
+    {name ="Samuel Holloway", email="sholloway@gmail.com"}
+]
+readme = "README.md"
+license = {file = "LICENSE.txt"}
+keywords = ["testing", "benchmarking"]
+
+[project.urls]
+Homepage = "https://github.com/sholloway/python-benchmarking-examples"
+Repository = "https://github.com/sholloway/python-benchmarking-examples.git"
+"Bug Tracker" = "https://github.com/sholloway/python-benchmarking-examples/issues"

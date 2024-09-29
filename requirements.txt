@@ -1,5 +1,0 @@
-bpython >= 0.24
-line-profiler >= 4.0.3
-mypy >= 1.7.1
-pytest >= 7.4.3
-pytest-benchmark >= 4.0.0
