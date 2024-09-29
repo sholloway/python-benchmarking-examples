@@ -13,13 +13,13 @@ init:
 	source .venv/bin/activate; \
 	python -m ensurepip --upgrade; \
 	python -m pip install --upgrade pip; \
-	pip install .; \
+	pip install -e .; \
 	)
 
 tests:
 	@( \
 	source .venv/bin/activate; \
-	python -m pytest; \ 
+	python -m pytest --capture=no; \
 	)
 
 shell:
