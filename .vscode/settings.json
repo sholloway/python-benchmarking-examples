@@ -6,7 +6,12 @@
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
     "cSpell.words": [
+        "boxplot",
+        "bplot",
+        "dataframe",
         "Devbox",
+        "facecolor",
+        "Interquartile",
         "venv",
         "xlabel",
         "ylabel"

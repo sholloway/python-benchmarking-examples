@@ -1,7 +1,11 @@
+import numpy as np
 import pytest
 
+import random
+from typing import Sequence
+
 from faker import Faker
-from examples.types import RandomNames
+from examples.types import RandomNames, TimeInNS
 
 fake = Faker()
 
@@ -34,3 +38,13 @@ def random_names() -> RandomNames:
     assert MISSING_PERSON not in names_seq
 
     return names_seq, names_set
+
+
+@pytest.fixture(scope="session")
+def perf_data_a() -> Sequence[TimeInNS]:
+    return np.random.default_rng().normal(loc=100, scale=4, size=200).tolist()
+
+
+@pytest.fixture(scope="session")
+def perf_data_b() -> Sequence[TimeInNS]:
+    return np.random.default_rng().gumbel(loc=75, scale=5, size=200).tolist()
