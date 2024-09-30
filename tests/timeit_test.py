@@ -245,7 +245,7 @@ def test_tabulating_distributions(
     a_percentiles.append(a_percentiles[2] - a_percentiles[0])
     b_percentiles.append(b_percentiles[2] - b_percentiles[0])
 
-    # 3. Build a data frame with Pandas.
+    # 3. Build a dataframe with Pandas by specifying the columns.
     data = {
         "Percentiles": percentiles,
         "Data A": a_percentiles,
@@ -254,7 +254,14 @@ def test_tabulating_distributions(
     dataframe = pd.DataFrame(data)
 
     # 4. Create and stylize the table.
-    table = GT(data=dataframe)
+    table = GT(data=dataframe, rowname_col="Percentiles") \
+        .tab_header(
+            title="Performance Data",
+            subtitle="Data A vs Data B"
+        ) \
+        .tab_source_note("UOM: Nanoseconds") \
+        .tab_stubhead(label="Percentiles") \
+        .fmt_integer(columns=["Data A", "Data B"])
 
     # 5. Display the table.
     table.show()
