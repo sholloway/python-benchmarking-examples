@@ -236,32 +236,45 @@ def test_tabulating_distributions(
     """
     # 1. Calculate the percentiles to display.
     # Get the percentiles you want to display
-    percentiles = [25, 50, 75, 99, 100]
+    percentiles = [25, 50, 75, 99]
     a_percentiles: list[float] = np.percentile(perf_data_a, percentiles).tolist()
     b_percentiles: list[float] = np.percentile(perf_data_b, percentiles).tolist()
 
-    # 2. Enrich the data by calculating the interquartile (IQR).
-    percentiles.append("IQR")
-    a_percentiles.append(a_percentiles[2] - a_percentiles[0])
-    b_percentiles.append(b_percentiles[2] - b_percentiles[0])
+    # 2. Enrich the data by calculating the sample size, min, max, and interquartile (IQR).
+    # fmt: off
+    a_stats = [
+        len(perf_data_a),                      # Count
+        min(a_percentiles),                    # Minimum
+        *a_percentiles,                        # P25, P50, P75, P99
+        max(a_percentiles),                    # Maximum
+        a_percentiles[2] - a_percentiles[0],   # Interquartile (IQR) = P75 - P25 
+    ]
+    # fmt: on
+
+    b_stats = [
+        len(perf_data_b),
+        min(b_percentiles),
+        *b_percentiles,
+        max(b_percentiles),
+        b_percentiles[2] - b_percentiles[0],
+    ]
 
     # 3. Build a dataframe with Pandas by specifying the columns.
     data = {
-        "Percentiles": percentiles,
-        "Data A": a_percentiles,
-        "Data B": b_percentiles,
+        "Stats": ["Count", "Min", "P25", "P50", "P75", "P99", "Max", "IQR"],
+        "Data A": a_stats,
+        "Data B": b_stats,
     }
     dataframe = pd.DataFrame(data)
 
     # 4. Create and stylize the table.
-    table = GT(data=dataframe, rowname_col="Percentiles") \
-        .tab_header(
-            title="Performance Data",
-            subtitle="Data A vs Data B"
-        ) \
-        .tab_source_note("UOM: Nanoseconds") \
-        .tab_stubhead(label="Percentiles") \
+    table = (
+        GT(data=dataframe, rowname_col="Stats")
+        .tab_header(title="Performance Data", subtitle="Data A vs Data B")
+        .tab_source_note("UOM: Nanoseconds")
+        .tab_stubhead(label="Percentiles")
         .fmt_integer(columns=["Data A", "Data B"])
+    )
 
     # 5. Display the table.
     table.show()
