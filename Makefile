@@ -28,3 +28,8 @@ shell:
 	bpython; \
 	)
 
+plot_benchmarks:
+	@( \
+	source .venv/bin/activate; \
+	python -m pytest tests/benchmarks_test.py --benchmark-histogram=./benchmark_histograms/$(shell date +%m_%d_%y@%H_%M)/; \
+	)

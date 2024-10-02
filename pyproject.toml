@@ -12,7 +12,7 @@ dependencies = [
     "numpy >= 2.1.1",
     "pandas >= 2.2.3",
     "pytest >= 7.4.3",
-    "pytest-benchmark >= 4.0.0"
+    "pytest-benchmark[histogram] >= 4.0.0"
 ]
 requires-python = ">=3.12"
 authors = [

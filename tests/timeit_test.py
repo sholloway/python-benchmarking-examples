@@ -151,11 +151,11 @@ def test_visualize_timeit_results() -> None:
             timer=time.perf_counter_ns,
         )
 
-        # Run the code 10k times each.
-        total_search_list_time: TimeInNS = search_list_timer.timeit(
-            number=num_iterations
-        )
-        total_search_set_time: TimeInNS = search_set_timer.timeit(number=num_iterations)
+        # Run the code multiple times.
+        # fmt: off
+        total_search_list_time: TimeInNS = search_list_timer.timeit(number=num_iterations)
+        total_search_set_time:  TimeInNS = search_set_timer.timeit(number=num_iterations)
+        # fmt: on
 
         # Calculate the average time each code snippet took in nanoseconds.
         avg_list_search_time: float = total_search_list_time / num_iterations
