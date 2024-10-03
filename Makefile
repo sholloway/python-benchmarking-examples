@@ -31,5 +31,14 @@ shell:
 plot_benchmarks:
 	@( \
 	source .venv/bin/activate; \
-	python -m pytest tests/benchmarks_test.py --benchmark-histogram=./benchmark_histograms/$(shell date +%m_%d_%y@%H_%M)/; \
+	python -m pytest tests/benchmarks_test.py --benchmark-histogram=./benchmark_histograms/$(shell date +%m_%d_%y@%H_%M)/Benchmark; \
+	)
+
+
+# Measure one run with cProfile and stores 10 top functions. 
+# Can sort by: ‘ncallls_recursion’, ‘ncalls’, ‘tottime’, ‘tottime_per’, ‘cumtime’, ‘cumtime_per’, ‘function_name’.
+profile_benchmark:
+	@( \
+	source .venv/bin/activate; \
+	python -m pytest tests/profile_test.py --benchmark-cprofile=tottime_per ; \
 	)

@@ -19,12 +19,14 @@ Outputs a table with the following columns:
     Iterations: The number of iterations per round.
 """
 
+from decimal import Decimal
+from fractions import Fraction
 import pytest
 
 init_values = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
 
 
-@pytest.mark.benchmark(group="Test Initialization", disable_gc=True)
+@pytest.mark.benchmark(group="List vs Tuple Initialization", disable_gc=True)
 def test_lists(benchmark):
     """
     Benchmark the performance of calling list((0, 1, 2, 3, 4, 5, 6, 7, 8, 9))
@@ -32,9 +34,25 @@ def test_lists(benchmark):
     benchmark(list, init_values)
 
 
-@pytest.mark.benchmark(group="Test Initialization", disable_gc=True)
+@pytest.mark.benchmark(group="List vs Tuple Initialization", disable_gc=True)
 def test_tuples(benchmark):
     """
     Benchmark the performance of calling tuple((0, 1, 2, 3, 4, 5, 6, 7, 8, 9))
     """
     benchmark(tuple, init_values)
+
+@pytest.mark.benchmark(group="Numerical Initialization", disable_gc=True)
+def test_ints(benchmark):
+    benchmark(int, 0.75)
+
+@pytest.mark.benchmark(group="Numerical Initialization", disable_gc=True)
+def test_floats(benchmark):
+    benchmark(float, 0.75)
+
+@pytest.mark.benchmark(group="Numerical Initialization", disable_gc=True)
+def test_decimals(benchmark):
+    benchmark(Decimal, 0.75)
+
+@pytest.mark.benchmark(group="Numerical Initialization", disable_gc=True)
+def test_fractions(benchmark):
+    benchmark(Fraction, 3, 4)
