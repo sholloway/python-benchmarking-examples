@@ -42,3 +42,14 @@ profile_benchmark:
 	source .venv/bin/activate; \
 	python -m pytest tests/profile_test.py --benchmark-cprofile=tottime_per ; \
 	)
+
+profile_lines:
+	@( \
+	source .venv/bin/activate; \
+	python -m kernprof \
+		--line-by-line \
+		--view \
+		--rich \
+		pytest  \
+		./tests/profile_with_line_profiler_test.py::TestWithLineProfiler::test_line_profiler; \
+	)
