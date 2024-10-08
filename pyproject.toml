@@ -11,8 +11,10 @@ dependencies = [
     "mypy >= 1.7.1",
     "numpy >= 2.1.1",
     "pandas >= 2.2.3",
+    "pyinstrument >= 4.7.3",
     "pytest >= 7.4.3",
-    "pytest-benchmark[histogram] >= 4.0.0"
+    "pytest-benchmark[histogram] >= 4.0.0",
+    "scalene >= 1.5.45"
 ]
 requires-python = ">=3.12"
 authors = [

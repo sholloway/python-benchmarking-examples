@@ -5,7 +5,7 @@ from line_profiler import profile
 from examples.types import TimeInSec
 
 
-@profile
+# @profile
 def numeric_process() -> None:
     initial_data: list[float] = []
 

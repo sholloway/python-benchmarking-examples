@@ -53,3 +53,39 @@ profile_lines:
 		pytest  \
 		./tests/profile_with_line_profiler_test.py::TestWithLineProfiler::test_line_profiler; \
 	)
+
+view_line_profiler_output:
+	@( \
+	source .venv/bin/activate; \
+	python -m line_profiler --rich pytest.lprof;\
+	)
+
+# Launch's py-spy profiler and generates an interactive flame graph.
+# It then opens Speedcope in the browser. 
+profile_with_scalene:
+	@( \
+	source .venv/bin/activate; \
+	python -m scalene --profile-all --- -m pytest ./tests/profile_with_line_profiler_test.py::TestWithLineProfiler::test_line_profiler ; \
+	)
+
+profile_with_pyinstrument:
+	@( \
+	source .venv/bin/activate; \
+	pyinstrument -m pytest ./tests/profile_with_line_profiler_test.py::TestWithLineProfiler::test_line_profiler; \
+	)
+
+profile_with_pyinstrument_html:
+	@( \
+	source .venv/bin/activate; \
+	pyinstrument --renderer=html -m pytest ./tests/profile_with_line_profiler_test.py::TestWithLineProfiler::test_line_profiler; \
+	)
+
+# https://www.speedscope.app/
+profile_with_pyinstrument_speedscope:
+	@( \
+	source .venv/bin/activate; \
+	pyinstrument --renderer=speedscope \
+		-o example.speedscope.json \
+		-m pytest ./tests/profile_with_line_profiler_test.py::TestWithLineProfiler::test_line_profiler; \
+	)
+# speedscope ./profile.speedscope.json
