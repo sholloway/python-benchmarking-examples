@@ -8,12 +8,14 @@ dependencies = [
     "great-tables >= 0.12.0",
     "line-profiler[all] >= 4.0.3",
     "matplotlib >= 3.9.2",
+    "memray >= 1.14.0",
     "mypy >= 1.7.1",
     "numpy >= 2.1.1",
     "pandas >= 2.2.3",
     "pyinstrument >= 4.7.3",
     "pytest >= 7.4.3",
     "pytest-benchmark[histogram] >= 4.0.0",
+    "pytest-memray >= 1.7.0",
     "scalene >= 1.5.45"
 ]
 requires-python = ">=3.12"

@@ -88,4 +88,21 @@ profile_with_pyinstrument_speedscope:
 		-o example.speedscope.json \
 		-m pytest ./tests/profile_with_line_profiler_test.py::TestWithLineProfiler::test_line_profiler; \
 	)
-# speedscope ./profile.speedscope.json
+
+
+# Profile the memory of a python module, generate a flamegraph HTML file, open in the browser.
+profile_memory: 
+	@( \
+	set -e ; \
+	source .venv/bin/activate; \
+	memray run --output ./memray_output/memory_example.bin --force examples/memory_example.py; \
+	memray flamegraph --output ./memray_output/flamegraph.html --force ./memray_output/memory_example.bin; \
+	open ./memray_output/flamegraph.html; \
+	)
+
+# open memray-flamegraph-memory_example.html; \ 
+profile_memory_test:
+	@( \
+	source .venv/bin/activate; \
+	python -m pytest --memray tests/memory_test.py; \
+	)

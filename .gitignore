@@ -4,6 +4,8 @@ TODO.md
 *.speedscope.json
 profile.html
 profile.json
+*.bin
+*.html
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
