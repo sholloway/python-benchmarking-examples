@@ -1,5 +1,7 @@
-.PHONY: env init tests shell
+#########################################################################################
+# Set up the demo environment
 
+.PHONY: env init tests shell
 # Setup the environment. Installs Python, git, and make.
 # Assumes DevBox is installed.
 env:
@@ -31,6 +33,10 @@ shell:
 	bpython; \
 	)
 
+
+#########################################################################################
+# pytest-benchmarks related targets.
+
 # Create boxplots of a pytest-benchmark test.
 plot_benchmarks:
 	@( \
@@ -38,14 +44,19 @@ plot_benchmarks:
 	python -m pytest tests/benchmarks_test.py --benchmark-histogram=./benchmark_histograms/$(shell date +%m_%d_%y@%H_%M)/Benchmark; \
 	)
 
+#########################################################################################
+# cProfile related targets.
 
 # Measure one run with cProfile and identify the 10 top functions. 
 # Can sort by: ‘ncallls_recursion’, ‘ncalls’, ‘tottime’, ‘tottime_per’, ‘cumtime’, ‘cumtime_per’, ‘function_name’.
 profile_benchmark:
 	@( \
 	source .venv/bin/activate; \
-	python -m pytest tests/profile_test.py --benchmark-cprofile=tottime_per ; \
+	python -m pytest tests/profile_with_benchmarks_test.py --benchmark-only --benchmark-cprofile=tottime_per ; \
 	)
+
+#########################################################################################
+# line-profiler related targets.
 
 # Use the line-profiler to profile a unit test.
 profile_lines:
@@ -66,13 +77,8 @@ view_line_profiler_output:
 	python -m line_profiler --rich pytest.lprof;\
 	)
 
-# Launch's py-spy profiler and generates an interactive flame graph.
-# It then opens Speedcope in the browser. 
-profile_with_scalene:
-	@( \
-	source .venv/bin/activate; \
-	python -m scalene --profile-all --- -m pytest ./tests/profile_with_line_profiler_test.py::TestWithLineProfiler::test_line_profiler ; \
-	)
+#########################################################################################
+# pyinstrument related targets.
 
 # Profile a test with pyinstrument
 profile_with_pyinstrument:
@@ -99,6 +105,8 @@ profile_with_pyinstrument_speedscope:
 		-m pytest ./tests/profile_with_line_profiler_test.py::TestWithLineProfiler::test_line_profiler; \
 	)
 
+#########################################################################################
+# memray related targets.
 
 # Profile the memory of a python module with memray, 
 # generate a flamegraph HTML file, and open it in the browser.

@@ -25,5 +25,11 @@ named _.venv_. It then installs the dependencies into the virtual environment.
 If you ever want to do a clean install, just delete _.venv_ and run `make init` again.
 
 ## Working with the Examples
-
-### Timeit Examples
+| File                                | Demonstrates                                                | Instructions                                                                   | 
+|-------------------------------------|-------------------------------------------------------------|--------------------------------------------------------------------------------|
+| simple_timings_test.py              | How to manually measure how long a piece of code runs.      | Run the tests one at a time with the IDE.                                      | 
+| timeit_test.py                      | How to use timeit in benchmark tests and visualize results. | Run the tests one at a time with the IDE.                                      | 
+| benchmarks_test.py                  | How to use pytest-benchmarks.                               | Run the tests one at a time with the IDE and use the plot_benchmarks target.   | 
+| profile_with_benchmarks_test.py     | How to use cProfiler.                                       | Run the tests one at a time with the IDE and use the profile_benchmark target. | 
+| profile_with_line_profiler_test.py  | How to use the line-profiler.                               | Run the targets profile_lines and view_line_profiler_output                    | 
+| memory_test.py                      | How to use memray.                                          | Run the targets profile_memory and profile_memory_test                         | 
